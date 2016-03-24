@@ -11,10 +11,10 @@ This document describes version 1.0 of the eeGeo POI REST API for submitting and
 
 1. Obtain a Developer Authentication Token by signing up at [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/)
 2. Create an Application API Key at [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/)
-3. Create A new POI Set
-4. Associate your Application API Key with your newly created POI Set
-5. Add POIs to your POI Set
-6. Perform Free-Text, Category or Indoor queries
+3. [Create A new POI Set](#newpoiset)
+4. [Associate your Application API Key with your newly created POI Set](#associate)
+5. [Add POIs to your POI Set](#createpoi)
+6. Perform [Free-Text, Category or Indoor](#search) queries
 
 ---
 
@@ -47,7 +47,7 @@ A POI Set is a JSON object with the following attributes:
 
 ##### Create a POI Set
 
-To create a new POI Set, make a RESTful request passing the name of the POI set:
+<a name="newpoiset"></a>To create a new POI Set, make a RESTful request passing the name of the POI set:
 
 ```sh
 $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/?token=dev_auth_token -d '{"name":"my-poi-set"}'
@@ -95,7 +95,7 @@ Where ```<SID>``` is the POI Set ID to delete.
 
 ##### Associate App API Key
 
-Application API Keys can be associated with a POI Set to provide that Application access to the POIs in the POI Set.
+<a name="associate"></a>Application API Keys can be associated with a POI Set to provide that Application access to the POIs in the POI Set.
 
 To do this, make a RESTful call:
 
@@ -151,7 +151,7 @@ The ```user_data``` attribute is entirely custom, however in [eegeo-example-app]
 
 ##### Create a new outdoor POI
 
-To create a new POI, make the following RESTful call:
+<a name="createpoi"></a>To create a new POI, make the following RESTful call:
 
 ```sh
 $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
@@ -261,7 +261,7 @@ The ```category``` property of a POI is flexible. You can define your own taxono
 
 Searching
 =========
-
+<a name="search"></a>
 #### Free Text Search
 
 To perform free text search, perform the following query:
