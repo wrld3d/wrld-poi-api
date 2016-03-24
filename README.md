@@ -381,9 +381,9 @@ Where ```<SID>``` is the POI Set ID to perform the Bulk Operation on.
 ---
 
 #### Disclaimer
-This is an early version of the data format and API for eeGeo indoor maps.  eeGeo Ltd reserves the right to make changes to the API and its documentation at any time.  
+This is an early version of the POI API.  eeGeo Ltd reserves the right to make changes to the API and its documentation at any time.  
 
 ---
 
 #### Contact us
-If you have any problems or queries please [raise an issue](https://github.com/eegeo/indoor-maps-api/issues/new).
+If you have any problems or queries please [raise an issue](https://github.com/eegeo/poi-api/issues/new).
