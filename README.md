@@ -11,7 +11,7 @@ This document describes version 1.0 of the eeGeo POI REST API for submitting and
 
 1. Obtain a Developer Authentication Token by signing up at [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/)
 2. Create an Application API Key at [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/)
-3. [Create A new POI Set](#newpoiset)
+3. [Create a new POI Set](#newpoiset)
 4. [Associate your Application API Key with your newly created POI Set](#associate)
 5. [Add POIs to your POI Set](#createpoi)
 6. Perform [Free-Text, Category or Indoor](#search) queries
@@ -29,7 +29,7 @@ The Authentication Token will be referred to as ```dev_auth_token``` throughout 
 
 #### Application API Key
 
-The Application API Key is the API key used to authenticate the eeGeo SDK. Application Keys can be associated with POI sets, providing that Application access to the POI set. Obtain Application API keys from [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/).
+The Application API Key is the API key used to authenticate the eeGeo SDK. Application Keys can be associated with POI sets, providing that application access to the POI set. Obtain Application API keys from [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/).
 
 Application API Keys will be referred to as ```app_api_key``` throughout this README
 
@@ -45,9 +45,9 @@ A POI Set is a JSON object with the following attributes:
 |`name`|string| an appropriate name for the poi set
 |`api_key_permissions`|string list| app api keys that have access to this poi set
 
-##### Create a POI Set
+##### <a name="newpoiset"></a>Create a POI Set
 
-<a name="newpoiset"></a>To create a new POI Set, make a RESTful request passing the name of the POI set:
+To create a new POI Set, make a RESTful request passing the name of the POI set:
 
 ```sh
 $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/?token=dev_auth_token -d '{"name":"my-poi-set"}'
@@ -93,9 +93,9 @@ $ curl -v -XDELETE https://poi.eegeo.com/v1/poisets/<SID>?token=<dev_auth_token>
 ```
 Where ```<SID>``` is the POI Set ID to delete.
 
-##### Associate App API Key
+##### <a name="associate"></a>Associate App API Key
 
-<a name="associate"></a>Application API Keys can be associated with a POI Set to provide that Application access to the POIs in the POI Set.
+Application API Keys can be associated with a POI Set to provide that Application access to the POIs in the POI Set.
 
 To do this, make a RESTful call:
 
@@ -123,7 +123,7 @@ Points of Interest
 
 A POI is a Point of Interest. POIs are added to POI Sets and can be searched by applications with access to that POI Set.
 
-The default POI and default Taxonomy is supported by [eegeo-example-app](http://github.com/eegeo/eegeo-example-app) - however both the POI API and eegeo-example-app can be customised, so if the default behaviour does not meet your needs you can change the behaviour to suit.
+The default POI and default taxonomy is supported by [eegeo-example-app](http://github.com/eegeo/eegeo-example-app) - however both the POI API and eegeo-example-app can be customised, so if the default behaviour does not meet your needs you can change the behaviour to suit.
 
 A POI is a JSON object with the following attributes:
 
@@ -149,9 +149,9 @@ The ```user_data``` attribute is entirely custom, however in [eegeo-example-app]
 |`phone`|string| a phone number for the poi
 |`web`|string| a website for the poi
 
-##### Create a new outdoor POI
+##### <a name="createpoi"></a>Create a new outdoor POI
 
-<a name="createpoi"></a>To create a new POI, make the following RESTful call:
+To create a new POI, make the following RESTful call:
 
 ```sh
 $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
@@ -230,7 +230,6 @@ $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_to
   "category":"shop",
   "lat":56.460189,
   "lon":-2.971023,
-  "height_offset":0.0,
   "indoor":true,
   "indoor_id":"overgate_dundee",
   "floor_id":0
@@ -259,9 +258,9 @@ The ```category``` property of a POI is flexible. You can define your own taxono
 
 ---
 
-Searching
+<a name="search"></a>Searching
 =========
-<a name="search"></a>
+
 #### Free Text Search
 
 To perform free text search, perform the following query:
