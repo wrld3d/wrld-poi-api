@@ -170,7 +170,7 @@ Where ```<SID>``` is the POI Set ID to add the POI to.
 To update attributes of an existing POI, make the following RESTful call:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/<PID>/?token=<dev_auth_token> -d '{
+$ curl -v -XPUT https://poi.eegeo.com/v1/poisets/<SID>/pois/<PID>?token=<dev_auth_token> -d '{
   "title":"A new Title",
   "subtitle":"A new Subtitle"
 }'
