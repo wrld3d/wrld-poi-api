@@ -50,7 +50,7 @@ A POI Set is a JSON object with the following attributes:
 To create a new POI Set, make a RESTful request passing the name of the POI set:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1/poisets/?token=dev_auth_token -d '{"name":"my-poi-set"}'
+$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/?token=dev_auth_token -d '{"name":"my-poi-set"}'
 ```
 
 The response will be a JSON object specifying the newly created POI Set:
@@ -70,7 +70,7 @@ Make note of the POI Set ID, in this case ```1``` as this is used to make future
 All POI Sets you own can be listed by making a RESTful request to the poisets resource:
 
 ```
-$ curl -v https://poi.eegeo.com/v1/poisets/?token=<dev_auth_token>
+$ curl -v https://poi.eegeo.com/v1.1/poisets/?token=<dev_auth_token>
 ```
 
 This will return a collection of all POI Sets you own
@@ -80,7 +80,7 @@ This will return a collection of all POI Sets you own
 To query an individual POI Set, make a RESTful request to the poiset:
 
 ```
-$ curl -v https://poi.eegeo.com/v1/poisets/<SID>?token=<dev_auth_token>
+$ curl -v https://poi.eegeo.com/v1.1/poisets/<SID>?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID to query. This will return the POI Set as JSON.
@@ -89,7 +89,7 @@ Where ```<SID>``` is the POI Set ID to query. This will return the POI Set as JS
 
 To delete a POI Set, make a RESTful request to the poiset:
 ```
-$ curl -v -XDELETE https://poi.eegeo.com/v1/poisets/<SID>?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>?token=<dev_auth_token>
 ```
 Where ```<SID>``` is the POI Set ID to delete.
 
@@ -100,7 +100,7 @@ Application API Keys can be associated with a POI Set to provide that Applicatio
 To do this, make a RESTful call:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>?token=<dev_auth_token> -d '{"apikey":"<app_api_key>"}'
+$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>?token=<dev_auth_token> -d '{"apikey":"<app_api_key>"}'
 ```
 
 Where ```app_api_key``` is the Application API Key, and where ```<SID>``` is the POI Set ID to add the Application API Key to.
@@ -110,7 +110,7 @@ Where ```app_api_key``` is the Application API Key, and where ```<SID>``` is the
 To unassociate an Application API Key from a POI Set, perform the following RESTful call:
 
 ```sh
-$ curl -v -XDELETE https://poi.eegeo.com/v1/poisets/<SID>/<app_api_key>?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>/<app_api_key>?token=<dev_auth_token>
 ```
 
 Where ```app_api_key``` is the Application API Key, and where ```<SID>``` is the POI Set ID to remove the Application API Key from.
@@ -132,7 +132,7 @@ A POI is a JSON object with the following attributes:
 |`id`|generated|no|integer| a unique identifier for the poi, this is generated for you
 |`title`|requied|no|string| an appropriate title for the poi (i.e. place name)
 |`subtitle`|required|yes|string| an appropriate subtitle for the poi (i.e. address)
-|`category`|required|no|string| a category (i.e. coffee).
+|`tags`|required|yes|string| a whitespace separated list of [tags](#tags)
 |`lat`|required|no|decimal| wgs84 decimal degrees latitude
 |`lon`|required|no|decimal| wgs84 decimal degrees longitude
 |`height_offset`|optional|no|decimal| height in metres of poi above ground level (default: 0.0)
@@ -154,10 +154,10 @@ The ```user_data``` attribute is entirely custom, however in [eegeo-example-app]
 To create a new POI, make the following RESTful call:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
+$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
   "title":"eeGeo Dundee",
   "subtitle":"Suite 2, Westport House",
-  "category":"office",
+  "tags":"office business",
   "lat":56.459937,
   "lon":-2.978124
 }'
@@ -170,7 +170,7 @@ Where ```<SID>``` is the POI Set ID to add the POI to.
 To update attributes of an existing POI, make the following RESTful call:
 
 ```sh
-$ curl -v -XPUT https://poi.eegeo.com/v1/poisets/<SID>/pois/<PID>?token=<dev_auth_token> -d '{
+$ curl -v -XPUT https://poi.eegeo.com/v1.1/poisets/<SID>/pois/<PID>?token=<dev_auth_token> -d '{
   "title":"A new Title",
   "subtitle":"A new Subtitle"
 }'
@@ -183,7 +183,7 @@ Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the I
 To delete an existing POIs in a POI set, make the following RESTful call:
 
 ```sh
-$ curl -v -XDELETE https://poi.eegeo.com/v1/poisets/<SID>/pois/PID?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the ID of the POI
@@ -191,7 +191,7 @@ Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the I
 To delete all POIs in a POI set, make the following RESTful call:
 
 ```sh
-$ curl -v -XDELETE https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POIs belong to.
@@ -201,8 +201,8 @@ Where ```<SID>``` is the POI Set ID the POIs belong to.
 To query POIs in a POI set, make the following RESTful calls:
 
 ```sh
-$ curl -v https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_token>
-$ curl -v https://poi.eegeo.com/v1/poisets/<SID>/pois/PID?token=<dev_auth_token>
+$ curl -v https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token>
+$ curl -v https://poi.eegeo.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POIs belong to, and ```<PID>``` is the ID of the POI
@@ -224,10 +224,10 @@ The ```indoor_id``` is the id of the indoor map. See [indoor-map-api](http://git
 To create a new POI, make the following RESTful call:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
+$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
   "title":"Primark",
   "subtitle":"Overgate",
-  "category":"shop",
+  "tags":"clothing shopping",
   "lat":56.460189,
   "lon":-2.971023,
   "indoor":true,
@@ -238,23 +238,31 @@ $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/pois/?token=<dev_auth_to
 
 Where ```<SID>``` is the POI Set ID to add the POI to. 
 
-#### Default Taxonomy
+#### Tags
 
-A default taxonomy is provided in [eegeo-example-app](http://github.com/eegeo/eegeo-example-app). The categories supported are:
+The ```tags``` property of a POI is flexible. You can define your own taxonomy and categorisation to suit your need. However, the ```tags``` field in the POI must fulfil the following requirements:
 
-|Category|Description|
+1. All tags must be separated by one whitespace. Eg: ```"services office business"```
+2. Each tag may only contain lowercase alpha characters and/or underscore if required. Numbers are not allowed. Eg: ```"restaurant bar food_drink"```
+3. Tags are ordered from the most specific first to least specific. Eg: ```"burgers restaurant bar food_drink"```, therefore that particular POI is best described as a __burger__ joint and least described by __food_drink__, even though all the tags are relevant to the POI
+
+#### Default Tags
+
+A default set of high level tags is provided in [eegeo-example-app](http://github.com/eegeo/eegeo-example-app). The categories supported are:
+
+|Category|Examples|
  --- | ---
-|`coffee`| coffee shops, café, tearooms
-|`restaurants`| food-types, restaurants, diners, take-outs, fast-food
-|`nightlife`| bars, clubs, casinos
-|`museums`| cultural, museums, exhibitions
-|`hotels`| hotels, hostels, bed and breakfast
-|`financialservices`| banks, atms
-|`parks`| recreational, parks, forests
-
-#### Custom Taxonomies
-
-The ```category``` property of a POI is flexible. You can define your own taxonomy and categorisation to suit your need.
+|`accommodation`| hotels, bed & breakfast, resorts
+|`art_museums`| art galleries, museums, cultural centres
+|`business`| local businesses, professional services, offices
+|`entertainment`| cinemas, festivals, venues
+|`food_drink`| restaurants, cafes, diners
+|`amenities`| banks, services, information
+|`health`| doctors, emergency services, 
+|`shopping`| shops, stores, supplies, centres
+|`sports_leisure`| recreational, parks, sports activities
+|`tourism`| tours, tourist spots, landmarks
+|`transport`| airports, public transport, trains
 
 ---
 
@@ -266,9 +274,9 @@ The ```category``` property of a POI is flexible. You can define your own taxono
 To perform free text search, perform the following query:
 
 ```sh
-$ curl -v "https://poi.eegeo.com/v1/search?s=eeGeo&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
-$ curl -v "https://poi.eegeo.com/v1/search?s=eeGeo&lat=56.460189&lon=-2.971023&r=10&apikey=<app_api_key>"
-$ curl -v "https://poi.eegeo.com/v1/search?s=eeGeo&lat=56.460189&lon=-2.971023&n=1&apikey=<app_api_key>"
+$ curl -v "https://poi.eegeo.com/v1.1/search?s=eeGeo&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
+$ curl -v "https://poi.eegeo.com/v1.1/search?s=eeGeo&lat=56.460189&lon=-2.971023&r=10&apikey=<app_api_key>"
+$ curl -v "https://poi.eegeo.com/v1.1/search?s=eeGeo&lat=56.460189&lon=-2.971023&n=1&apikey=<app_api_key>"
 ```
 
 Where ```<app_api_key>``` is an Application API Key that has permission to access a POI Set.
@@ -291,12 +299,12 @@ Results are ordered by score. Scored is a measure of _closeness_ to the input qu
 1. Lexical distance from the search query
 2. Distance from the query origin
 
-#### Category Search
+#### Tags Search
 
-To perform a category search, perform the following query:
+To perform a tag search, perform the following query (searches for: ```"office business"```):
 
 ```sh
-$ curl -v "https://poi.eegeo.com/v1/category?c=office&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
+$ curl -v "https://poi.eegeo.com/v1.1/tag?t=office%20business&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
 ```
 
 Where ```<app_api_key>``` is an Application API Key that has permission to access a POI Set.
@@ -305,7 +313,7 @@ Permitted arguments to the query are:
 
 |Field|Required|Type|Description|
  --- | --- | --- | ---
-|`c`|required|string| the category to search for
+|`t`|required|string| the tag(s) to search for
 |`lat`|required|decimal| wgs84 decimal degrees latitude of the query
 |`lon`|required|decimal| wgs84 decimal degrees longitude of the query
 |`r`|optional|decimal| radius of the search query in metres (default: 1000.0)
@@ -316,7 +324,7 @@ Permitted arguments to the query are:
 To perform a category search, constrained to a particular indoor map, perform the following query:
 
 ```sh
-$ curl -v "https://poi.eegeo.com/v1/indoor?i=<indoor_map_id>&c=office&f=3&apikey=<app_api_key>"
+$ curl -v "https://poi.eegeo.com/v1.1/indoor?i=<indoor_map_id>&t=office%20business&f=3&apikey=<app_api_key>"
 ```
 
 Where ```<app_api_key>``` is an Application API Key that has permission to access a POI Set and ```<indoor_map_id>``` is the indoor map to constrain against.
@@ -327,7 +335,7 @@ Permitted arguments to the query are:
  --- | --- | --- | ---
 |`i`|required|string| the indoor map ID to constrain against
 |`f`|required|integer| the floor number of the origin of the search, starting at 0 for the lowest floor
-|`c`|required|string| the category to search for
+|`t`|required|string| the tag(s) to search for
 |`n`|optional|integer| maximum number of results to return (default: 20)
 |`s`|optional|integer| floor score drop off, i.e. the number of floors to search above and below (default: 15)
 
@@ -340,11 +348,11 @@ It is possible to make Bulk updates to the POI API to reduce round trips. The Bu
 To use the Bulk API, make queries of the following form:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/bulk/?token=<dev_auth_token> -d '{
+$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>/bulk/?token=<dev_auth_token> -d '{
     "create": [{ 
       "title" : "West House", 
       "subtitle" : "2 West Port, Dundee DD1 5EP", 
-      "category" : "nightlife",
+      "tags" : "bar food_drink",
       "lat" : 56.459336, 
       "lon" : -2.977645,
       "height_offset" : 0.1
@@ -352,7 +360,7 @@ $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/bulk/?token=<dev_auth_to
     { 
       "title" : "eeGeo Dundee", 
       "subtitle" : "Westport House", 
-      "category" : "office",
+      "tags" : "office business",
       "lat" : 56.459941, 
       "lon" : -2.978211,
       "height_offset" : 0.1,
@@ -365,7 +373,7 @@ $ curl -v -XPOST https://poi.eegeo.com/v1/poisets/<SID>/bulk/?token=<dev_auth_to
       "id" : 1,
       "title" : "West House", 
       "subtitle" : "2 West Port, Dundee DD1 5EP", 
-      "category" : "nightlife",
+      "tags" : "office business",
       "lat" : 56.459336, 
       "lon" : -2.977645,
       "height_offset" : 0.1
@@ -386,3 +394,4 @@ This is an early version of the POI API.  eeGeo Ltd reserves the right to make c
 
 #### Contact us
 If you have any problems or queries please [raise an issue](https://github.com/eegeo/poi-api/issues/new).
+
