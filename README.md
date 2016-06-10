@@ -1,6 +1,6 @@
 ![eeGeo](images/pois.jpg)
 
-eeGeo POI REST API v1.0
+eeGeo POI REST API v1.1
 ==================
 
 This document describes version 1.0 of the eeGeo POI REST API for submitting and managing custom Points of Interest. The POI API is primarily intended for use with [eegeo-example-app](http://github.com/eegeo/eegeo-example-app).
