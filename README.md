@@ -313,7 +313,7 @@ Permitted arguments to the query are:
 
 |Field|Required|Type|Description|
  --- | --- | --- | ---
-|`t`|required|string| the tag(s) to search for
+|`t`|optional|string| the tag(s) to search for. If not specified it will return all POIs it finds
 |`lat`|required|decimal| wgs84 decimal degrees latitude of the query
 |`lon`|required|decimal| wgs84 decimal degrees longitude of the query
 |`r`|optional|decimal| radius of the search query in metres (default: 1000.0)
@@ -335,7 +335,7 @@ Permitted arguments to the query are:
  --- | --- | --- | ---
 |`i`|required|string| the indoor map ID to constrain against
 |`f`|required|integer| the floor number of the origin of the search, starting at 0 for the lowest floor
-|`t`|required|string| the tag(s) to search for
+|`t`|optional|string| the tag(s) to search for. If not specified it will returbn all POIs it finds
 |`n`|optional|integer| maximum number of results to return (default: 20)
 |`s`|optional|integer| floor score drop off, i.e. the number of floors to search above and below (default: 15)
 
