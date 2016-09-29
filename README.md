@@ -148,6 +148,11 @@ The ```user_data``` attribute is entirely custom, however in [eegeo-example-app]
 |`image_url`|string| a url to an image to display for the poi
 |`phone`|string| a phone number for the poi
 |`web`|string| a website for the poi
+|`description`|string| a description for the poi
+|`highlight`|string| id of the highlight to enable for a poi
+|`highlight_color`|array| highlight color defined as an [R,G,B,A] int array (0-255)
+|`entity_highlight`|array| string array of entities to highlight for poi
+|`entity_highlight_color`|array| entity highlight color defined as [R,G,B,A] int array (0-255)
 
 ##### <a name="createpoi"></a>Create a new outdoor POI
 
