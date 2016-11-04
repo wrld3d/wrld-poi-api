@@ -153,6 +153,8 @@ The ```user_data``` attribute is entirely custom, however in [eegeo-example-app]
 |`highlight_color`|array| highlight color defined as an [R,G,B,A] int array (0-255)
 |`entity_highlight`|array| string array of entities to highlight for poi
 |`entity_highlight_color`|array| entity highlight color defined as [R,G,B,A] int array (0-255)
+|`custom_view`|string| a url of a html view
+|`custom_view_height`|int| define the height of the custom_view (optional)
 
 ##### <a name="createpoi"></a>Create a new outdoor POI
 
