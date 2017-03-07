@@ -298,6 +298,9 @@ Permitted arguments to the query are:
 |`r`|optional|decimal| radius of the search query in metres (default: 1000.0)
 |`n`|optional|integer| maximum number of results to return (default: 20)
 |`ms`|optional|decimal| minimum 'score' to results. the higher the number the fewer results will be matched  (default: 0.0)
+|`indoor_id`|optional|string| id of indoor map to filter results by (default: none)
+|`f`|optional|integer| the floor number of the origin of the search, starting at 0 for the lowest floor (default: 0)
+|`s`|optional|integer| floor score drop off, i.e. the number of floors to search above and below (default: 15)
 
 #####  Result Ordering and Scoring
 
@@ -345,7 +348,8 @@ Permitted arguments to the query are:
 |`t`|optional|string| the tag(s) to search for. If not specified it will returbn all POIs it finds
 |`n`|optional|integer| maximum number of results to return (default: 20)
 |`s`|optional|integer| floor score drop off, i.e. the number of floors to search above and below (default: 15)
-
+|`lat`|optional|decimal| wgs84 decimal degrees latitude of the query, used to sort results by distance
+|`lon`|optional|decimal| wgs84 decimal degrees longitude of the query, used to sort results by distance
 ---
 
 #### Bulk API
