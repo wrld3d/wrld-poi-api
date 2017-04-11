@@ -1,16 +1,16 @@
-![eeGeo](images/pois.jpg)
+![WRLD](images/pois.jpg)
 
-eeGeo POI REST API v1.1
-==================
+WRLD POI REST API v1.1.0
+========================
 
-This document describes version 1.0 of the eeGeo POI REST API for submitting and managing custom Points of Interest. The POI API is primarily intended for use with [eegeo-example-app](http://github.com/eegeo/eegeo-example-app).
+This document describes version 1.1.0 of the WRLD POI REST API for submitting and managing custom Points of Interest. The POI API is primarily intended for use with [wrld-example-app](http://github.com/wrld3d/wrld-example-app).
 
 ---
 
 ## Quick Start
 
-1. Obtain a Developer Authentication Token by signing up at [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/)
-2. Create an Application API Key at [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/)
+1. Obtain a Developer Authentication Token by signing up at [https://www.wrld3d.com/developers/](https://www.wrld3d.com/developers/)
+2. Create an Application API Key at [https://www.wrld3d.com/developers/](https://www.wrld3d.com/developers/)
 3. [Create a new POI Set](#newpoiset)
 4. [Associate your Application API Key with your newly created POI Set](#associate)
 5. [Add POIs to your POI Set](#createpoi)
@@ -23,13 +23,13 @@ Full POI API Specification
 
 #### Authentication Token
 
-Obtain a Developer Authentication Token by signing up at [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/). The Developer Authentication Token allows you to make authenticated requests against the POI service.
+Obtain a Developer Authentication Token by signing up at [https://www.wrld.com/developers/](https://www.wrld.com/developers/). The Developer Authentication Token allows you to make authenticated requests against the POI service.
 
 The Authentication Token will be referred to as ```dev_auth_token``` throughout this README
 
 #### Application API Key
 
-The Application API Key is the API key used to authenticate the eeGeo SDK. Application Keys can be associated with POI sets, providing that application access to the POI set. Obtain Application API keys from [https://www.eegeo.com/developers/](https://www.eegeo.com/developers/).
+The Application API Key is the API key used to authenticate the WRLD SDK. Application Keys can be associated with POI sets, providing that application access to the POI set. Obtain Application API keys from [https://www.wrld.com/developers/](https://www.wrld.com/developers/).
 
 Application API Keys will be referred to as ```app_api_key``` throughout this README
 
@@ -50,7 +50,7 @@ A POI Set is a JSON object with the following attributes:
 To create a new POI Set, make a RESTful request passing the name of the POI set:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/?token=dev_auth_token -d '{"name":"my-poi-set"}'
+$ curl -v -XPOST https://poi.wrld3d.com/v1.1/poisets/?token=dev_auth_token -d '{"name":"my-poi-set"}'
 ```
 
 The response will be a JSON object specifying the newly created POI Set:
@@ -70,7 +70,7 @@ Make note of the POI Set ID, in this case ```1``` as this is used to make future
 All POI Sets you own can be listed by making a RESTful request to the poisets resource:
 
 ```
-$ curl -v https://poi.eegeo.com/v1.1/poisets/?token=<dev_auth_token>
+$ curl -v https://poi.wrld3d.com/v1.1/poisets/?token=<dev_auth_token>
 ```
 
 This will return a collection of all POI Sets you own
@@ -80,7 +80,7 @@ This will return a collection of all POI Sets you own
 To query an individual POI Set, make a RESTful request to the poiset:
 
 ```
-$ curl -v https://poi.eegeo.com/v1.1/poisets/<SID>?token=<dev_auth_token>
+$ curl -v https://poi.wrld3d.com/v1.1/poisets/<SID>?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID to query. This will return the POI Set as JSON.
@@ -89,7 +89,7 @@ Where ```<SID>``` is the POI Set ID to query. This will return the POI Set as JS
 
 To delete a POI Set, make a RESTful request to the poiset:
 ```
-$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.wrld3d.com/v1.1/poisets/<SID>?token=<dev_auth_token>
 ```
 Where ```<SID>``` is the POI Set ID to delete.
 
@@ -100,7 +100,7 @@ Application API Keys can be associated with a POI Set to provide that Applicatio
 To do this, make a RESTful call:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>?token=<dev_auth_token> -d '{"apikey":"<app_api_key>"}'
+$ curl -v -XPOST https://poi.wrld3d.com/v1.1/poisets/<SID>?token=<dev_auth_token> -d '{"apikey":"<app_api_key>"}'
 ```
 
 Where ```app_api_key``` is the Application API Key, and where ```<SID>``` is the POI Set ID to add the Application API Key to.
@@ -110,7 +110,7 @@ Where ```app_api_key``` is the Application API Key, and where ```<SID>``` is the
 To unassociate an Application API Key from a POI Set, perform the following RESTful call:
 
 ```sh
-$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>/<app_api_key>?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.wrld3d.com/v1.1/poisets/<SID>/<app_api_key>?token=<dev_auth_token>
 ```
 
 Where ```app_api_key``` is the Application API Key, and where ```<SID>``` is the POI Set ID to remove the Application API Key from.
@@ -123,7 +123,7 @@ Points of Interest
 
 A POI is a Point of Interest. POIs are added to POI Sets and can be searched by applications with access to that POI Set.
 
-The default POI and default taxonomy is supported by [eegeo-example-app](http://github.com/eegeo/eegeo-example-app) - however both the POI API and eegeo-example-app can be customised, so if the default behaviour does not meet your needs you can change the behaviour to suit.
+The default POI and default taxonomy is supported by [wrld-example-app](http://github.com/wrld3d/wrld-example-app) - however both the POI API and wrld-example-app can be customised, so if the default behaviour does not meet your needs you can change the behaviour to suit.
 
 A POI is a JSON object with the following attributes:
 
@@ -141,7 +141,7 @@ A POI is a JSON object with the following attributes:
 |`floor_id`|optional|no|integer| the floor_id of the indoor map the poi belongs to (default: 0)
 |`user_data`|optional|yes|json| a json object of custom user data (default: empty)
 
-The ```user_data``` attribute is entirely custom, however in [eegeo-example-app](http://github.com/eegeo/eegeo-example-app) the following default ```user_data``` attributes are supported:
+The ```user_data``` attribute is entirely custom, however in [wrld-example-app](http://github.com/wrld3d/wrld-example-app) the following default ```user_data``` attributes are supported:
 
 |Field|Type|Description|
  --- | --- | ---
@@ -161,8 +161,8 @@ The ```user_data``` attribute is entirely custom, however in [eegeo-example-app]
 To create a new POI, make the following RESTful call:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
-  "title":"eeGeo Dundee",
+$ curl -v -XPOST https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
+  "title":"WRLD Dundee",
   "subtitle":"Suite 2, Westport House",
   "tags":"office business",
   "lat":56.459937,
@@ -177,7 +177,7 @@ Where ```<SID>``` is the POI Set ID to add the POI to.
 To update attributes of an existing POI, make the following RESTful call:
 
 ```sh
-$ curl -v -XPUT https://poi.eegeo.com/v1.1/poisets/<SID>/pois/<PID>?token=<dev_auth_token> -d '{
+$ curl -v -XPUT https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/<PID>?token=<dev_auth_token> -d '{
   "title":"A new Title",
   "subtitle":"A new Subtitle"
 }'
@@ -190,7 +190,7 @@ Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the I
 To delete an existing POIs in a POI set, make the following RESTful call:
 
 ```sh
-$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the ID of the POI
@@ -198,7 +198,7 @@ Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the I
 To delete all POIs in a POI set, make the following RESTful call:
 
 ```sh
-$ curl -v -XDELETE https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POIs belong to.
@@ -208,15 +208,15 @@ Where ```<SID>``` is the POI Set ID the POIs belong to.
 To query POIs in a POI set, make the following RESTful calls:
 
 ```sh
-$ curl -v https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token>
-$ curl -v https://poi.eegeo.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
+$ curl -v https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token>
+$ curl -v https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POIs belong to, and ```<PID>``` is the ID of the POI
 
 #### Indoor POI
 
-Indoor POIs are supported by default in [eegeo-example-app](http://github.com/eegeo/eegeo-example-app). To create an indoor POI three optional attributes must be defined when creating the POI:
+Indoor POIs are supported by default in [wrld-example-app](http://github.com/wrld3d/wrld-example-app). To create an indoor POI three optional attributes must be defined when creating the POI:
 
 |Field|Type|Description|
  --- | --- | ---
@@ -224,14 +224,14 @@ Indoor POIs are supported by default in [eegeo-example-app](http://github.com/ee
 |`indoor_id`|boolean| the id of the indoor map the poi belongs to (default: empty)
 |`floor_id`|integer| the floor_id of the indoor map the poi belongs to (default: 0)
 
-The ```indoor_id``` is the id of the indoor map. See [indoor-map-api](http://github.com/eegeo/indoor-map-api) for more details.
+The ```indoor_id``` is the id of the indoor map. See [indoor-map-api](http://github.com/wrld3d/indoor-map-api) for more details.
 
 ##### Create a new indoor POI
 
 To create a new POI, make the following RESTful call:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
+$ curl -v -XPOST https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token> -d '{
   "title":"Primark",
   "subtitle":"Overgate",
   "tags":"clothing shopping",
@@ -255,7 +255,7 @@ The ```tags``` property of a POI is flexible. You can define your own taxonomy a
 
 #### Default Tags
 
-A default set of high level tags is provided in [eegeo-example-app](http://github.com/eegeo/eegeo-example-app). The categories supported are:
+A default set of high level tags is provided in [wrld-example-app](http://github.com/wrld3d/wrld-example-app). The categories supported are:
 
 |Category|Examples|
  --- | ---
@@ -281,9 +281,9 @@ A default set of high level tags is provided in [eegeo-example-app](http://githu
 To perform free text search, perform the following query:
 
 ```sh
-$ curl -v "https://poi.eegeo.com/v1.1/search?s=eeGeo&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
-$ curl -v "https://poi.eegeo.com/v1.1/search?s=eeGeo&lat=56.460189&lon=-2.971023&r=10&apikey=<app_api_key>"
-$ curl -v "https://poi.eegeo.com/v1.1/search?s=eeGeo&lat=56.460189&lon=-2.971023&n=1&apikey=<app_api_key>"
+$ curl -v "https://poi.wrld3d.com/v1.1/search?s=WRLD&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
+$ curl -v "https://poi.wrld3d.com/v1.1/search?s=WRLD&lat=56.460189&lon=-2.971023&r=10&apikey=<app_api_key>"
+$ curl -v "https://poi.wrld3d.com/v1.1/search?s=WRLD&lat=56.460189&lon=-2.971023&n=1&apikey=<app_api_key>"
 ```
 
 Where ```<app_api_key>``` is an Application API Key that has permission to access a POI Set.
@@ -314,7 +314,7 @@ Results are ordered by score. Scored is a measure of _closeness_ to the input qu
 To perform a tag search, perform the following query (searches for: ```"office business"```):
 
 ```sh
-$ curl -v "https://poi.eegeo.com/v1.1/tag?t=office%20business&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
+$ curl -v "https://poi.wrld3d.com/v1.1/tag?t=office%20business&lat=56.460189&lon=-2.971023&apikey=<app_api_key>"
 ```
 
 Where ```<app_api_key>``` is an Application API Key that has permission to access a POI Set.
@@ -334,7 +334,7 @@ Permitted arguments to the query are:
 To perform a category search, constrained to a particular indoor map, perform the following query:
 
 ```sh
-$ curl -v "https://poi.eegeo.com/v1.1/indoor?i=<indoor_map_id>&t=office%20business&f=3&apikey=<app_api_key>"
+$ curl -v "https://poi.wrld3d.com/v1.1/indoor?i=<indoor_map_id>&t=office%20business&f=3&apikey=<app_api_key>"
 ```
 
 Where ```<app_api_key>``` is an Application API Key that has permission to access a POI Set and ```<indoor_map_id>``` is the indoor map to constrain against.
@@ -359,7 +359,7 @@ It is possible to make Bulk updates to the POI API to reduce round trips. The Bu
 To use the Bulk API, make queries of the following form:
 
 ```sh
-$ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>/bulk/?token=<dev_auth_token> -d '{
+$ curl -v -XPOST https://poi.wrld3d.com/v1.1/poisets/<SID>/bulk/?token=<dev_auth_token> -d '{
     "create": [{ 
       "title" : "West House", 
       "subtitle" : "2 West Port, Dundee DD1 5EP", 
@@ -369,7 +369,7 @@ $ curl -v -XPOST https://poi.eegeo.com/v1.1/poisets/<SID>/bulk/?token=<dev_auth_
       "height_offset" : 0.1
     },
     { 
-      "title" : "eeGeo Dundee", 
+      "title" : "WRLD Dundee", 
       "subtitle" : "Westport House", 
       "tags" : "office business",
       "lat" : 56.459941, 
@@ -399,10 +399,11 @@ Where ```<SID>``` is the POI Set ID to perform the Bulk Operation on.
 ---
 
 #### Disclaimer
-This is an early version of the POI API.  eeGeo Ltd reserves the right to make changes to the API and its documentation at any time.  
+This is a stable, semantically versioned API. 
+
+WRLD may make changes to the API from time to time but will adhere to [Semantic Versioning](http://semver.org/) and provide backward compatible end points for as long as possible.
 
 ---
 
 #### Contact us
-If you have any problems or queries please [raise an issue](https://github.com/eegeo/poi-api/issues/new).
-
+If you have any problems or queries please [raise an issue](https://github.com/wrld3d/wrld-poi-api/issues/new).
