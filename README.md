@@ -1,4 +1,4 @@
-![eeGeo](images/pois.jpg)
+![eeGeo](images/pois.png)
 
 eeGeo POI REST API v1.1
 ==================
