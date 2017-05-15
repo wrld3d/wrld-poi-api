@@ -1,4 +1,4 @@
-![WRLD](images/pois.png)
+![WRLD](images/pois.jpg)
 
 WRLD POI REST API v1.1.0
 ========================
