@@ -23,13 +23,13 @@ Full POI API Specification
 
 #### Authentication Token
 
-Obtain a Developer Authentication Token by signing up at [https://www.wrld.com/developers/](https://www.wrld.com/developers/). The Developer Authentication Token allows you to make authenticated requests against the POI service.
+Obtain a Developer Authentication Token by signing up at [https://www.wrld3d.com/developers/](https://www.wrld3d.com/developers/). The Developer Authentication Token allows you to make authenticated requests against the POI service.
 
 The Authentication Token will be referred to as ```dev_auth_token``` throughout this README
 
 #### Application API Key
 
-The Application API Key is the API key used to authenticate the WRLD SDK. Application Keys can be associated with POI sets, providing that application access to the POI set. Obtain Application API keys from [https://www.wrld.com/developers/](https://www.wrld.com/developers/).
+The Application API Key is the API key used to authenticate the WRLD SDK. Application Keys can be associated with POI sets, providing that application access to the POI set. Obtain Application API keys from [https://www.wrld3d.com/developers/](https://www.wrld3d.com/developers/).
 
 Application API Keys will be referred to as ```app_api_key``` throughout this README
 
