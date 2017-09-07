@@ -130,14 +130,14 @@ A POI is a JSON object with the following attributes:
 |Field|Required|Empty|Type|Description|
  --- | --- | --- | --- | ---
 |`id`|generated|no|integer| a unique identifier for the poi, this is generated for you
-|`title`|requied|no|string| an appropriate title for the poi (i.e. place name)
+|`title`|required|no|string| an appropriate title for the poi (i.e. place name)
 |`subtitle`|required|yes|string| an appropriate subtitle for the poi (i.e. address)
-|`tags`|required|yes|string| a whitespace separated list of [tags](#tags)
+|`tags`|required|no|string| a whitespace separated list of [tags](#tags)
 |`lat`|required|no|decimal| wgs84 decimal degrees latitude
 |`lon`|required|no|decimal| wgs84 decimal degrees longitude
-|`height_offset`|optional|no|decimal| height in metres of poi above ground level (default: 0.0)
+|`height_offset`|optional|no|decimal| height in metres of poi above ground level (default: 0)
 |`indoor`|optional|no|boolean| whether poi is indoor (default: false)
-|`indoor_id`|optional|yes|boolean| the id of the indoor map the poi belongs to (default: empty)
+|`indoor_id`|optional|yes|string| the id of the indoor map the poi belongs to (default: empty)
 |`floor_id`|optional|no|integer| the floor_id of the indoor map the poi belongs to (default: 0)
 |`user_data`|optional|yes|json| a json object of custom user data (default: empty)
 
@@ -221,7 +221,7 @@ Indoor POIs are supported by default in [wrld-example-app](http://github.com/wrl
 |Field|Type|Description|
  --- | --- | ---
 |`indoor`|boolean| whether poi is indoor (default: false)
-|`indoor_id`|boolean| the id of the indoor map the poi belongs to (default: empty)
+|`indoor_id`|string| the id of the indoor map the poi belongs to (default: empty)
 |`floor_id`|integer| the floor_id of the indoor map the poi belongs to (default: 0)
 
 The ```indoor_id``` is the id of the indoor map. See [indoor-map-api](http://github.com/wrld3d/indoor-map-api) for more details.
@@ -257,19 +257,22 @@ The ```tags``` property of a POI is flexible. You can define your own taxonomy a
 
 A default set of high level tags is provided in [wrld-example-app](http://github.com/wrld3d/wrld-example-app). The categories supported are:
 
-|Category|Examples|
+|Category|Tags|
  --- | ---
-|`accommodation`| hotels, bed & breakfast, resorts
-|`art_museums`| art galleries, museums, cultural centres
-|`business`| local businesses, professional services, offices
-|`entertainment`| cinemas, festivals, venues
-|`food_drink`| restaurants, cafes, diners
-|`amenities`| banks, services, information
-|`health`| doctors, emergency services, 
-|`shopping`| shops, stores, supplies, centres
-|`sports_leisure`| recreational, parks, sports activities
-|`tourism`| tours, tourist spots, landmarks
-|`transport`| airports, public transport, trains
+ |Shopping|`fashion`, `fashion_kids`, `fashion_men`, `fashion_women`, `florist`, `groceries`, `night_shopping`, `technology`
+ |Transport|`airport`, `bus`, `charge_point`,`cycling`, `ferry`, `fuel`, `limo`, `parking`, `subway`, `taxi`, `train`, `tram`, `transport`, `uber`
+ |Indoor Entertainment|`art`, `casino`, `cinema`, `gallery`, `library`, `music`, `shopping`, `spa`
+ |Outdoor Entertainment|`camping`, `fishing`, `football`, `golf`, `historic_monument`, `observation_point`, `park`, `playing_field`, `race_track`, `sailing`, `shooting`, `skiing`, `sports_field`, `sports`, `zoo`
+ |Accommodation|`accommodation`, `lodge`, `home`, `home_apartment`, `hostel`, `hotel`
+ |Landscape Feature|`forest`, `lake`, `mountain`, `river`
+ |Religion|`christianity`, `church`, `islam`, `judaism`, `place_of_worship`
+ |Bathrooms|`bathroom`, `toilet_ladies`, `toilet_men`
+ |Food & Drink|`bed_breakfast`, `beer`, `burgers`, `chinese_thai`, `cocktail`, `coffee`, `donuts`, `food_drink`, `indian`, `pizza`, `seafood`, `steak`, `sushi`, `vegan`, `vegetarian`, `wine`
+ |Buildings|`atm`, `bank`, `dentist`, `farm`, `fire`, `hospital`, `observatory`, `offices`, `payphone`, `pharmacy`, `police`, `post_office`, `telephone_booth`, `tourist_info`, `town_hall`, `traffic_counter`, `university`, `vet`, `wind_turbine`
+ |Smart Office|`badge_reader`, `bin`, `bin_full`, `co_two_detector`, `collaboration_space`, `defibrillator`, `department`, `electricity_meter`, `elevator`, `emergency_exit`, `escalator`, `fire_extinguisher`, `first_aid`, `gas_meter`, `hvac_unit`, `meeting_room`, `meeting_room_available_soon`, `meeting_room_available`, `meeting_room_unavailable`, `occupancy_sensor`, `positioning_beacon`, `printer`, `reception`, `security_alarm`, `smart_post`, `smoke_detector`, `stairs`, `stationery`, `temperature_sensor`, `thermostat`, `video_conference`, `washing_machine`, `wi_fi_point`, `working_group`
+ |Smart Home|`dining_room`, `driveway`, `fireplace`, `fridge`, `homeware`, `kitchen`, `oven`
+ |Web|`click_and_collect`, `facebook`, `google_plus`, `link`, `twitter`, `picasa`, `photo`, `video`, `vimeo`, `virtual_tour`, `vr_experience`, `warning`, `wikipedia`, `youtube`
+ |Other|`accessible`, `alert`, `border`, `business`, `childcare`, `digital_sign`, `education`, `entertainment`, `events`, `general`, `health`, `lifeguard`, `meter`, `message`, `mobile_phone`, `my_location`, `person`, `pin`, `remote_control`, `solar_panels`, `star`, `ticket`
 
 ---
 
