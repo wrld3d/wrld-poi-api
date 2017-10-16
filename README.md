@@ -303,7 +303,7 @@ Permitted arguments to the query are:
 |`ms`|optional|decimal| minimum 'score' to results. the higher the number the fewer results will be matched  (default: 0.0)
 |`indoor_id`|optional|string| id of indoor map to filter results by (default: none)
 |`f`|optional|integer| the floor number of the origin of the search, starting at 0 for the lowest floor (default: 0)
-|`s`|optional|integer| floor score drop off, i.e. the number of floors to search above and below (default: 15)
+|`fs`|optional|integer| floor score drop off, i.e. the number of floors to search above and below (default: 15)
 
 #####  Result Ordering and Scoring
 
