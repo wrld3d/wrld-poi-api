@@ -224,7 +224,7 @@ Indoor POIs are supported by default in [wrld-example-app](http://github.com/wrl
 |`indoor_id`|string| the id of the indoor map the poi belongs to (default: empty)
 |`floor_id`|integer| the floor_id of the indoor map the poi belongs to (default: 0)
 
-The ```indoor_id``` is the id of the indoor map. See [indoor-map-api](http://github.com/wrld3d/indoor-map-api) for more details.
+The ```indoor_id``` is the id of the indoor map. See [wrld-indoor-maps-api](http://github.com/wrld3d/wrld-indoor-maps-api) for more details.
 
 ##### Create a new indoor POI
 
