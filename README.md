@@ -190,7 +190,7 @@ Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the I
 To delete an existing POIs in a POI set, make the following RESTful call:
 
 ```sh
-$ curl -v -XDELETE https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
+$ curl -v -XDELETE https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/<PID>?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POI belongs to, and ```<PID>``` is the ID of the POI
@@ -209,7 +209,7 @@ To query POIs in a POI set, make the following RESTful calls:
 
 ```sh
 $ curl -v https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/?token=<dev_auth_token>
-$ curl -v https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/PID?token=<dev_auth_token>
+$ curl -v https://poi.wrld3d.com/v1.1/poisets/<SID>/pois/<PID>?token=<dev_auth_token>
 ```
 
 Where ```<SID>``` is the POI Set ID the POIs belong to, and ```<PID>``` is the ID of the POI
