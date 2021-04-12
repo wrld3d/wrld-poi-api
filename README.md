@@ -149,12 +149,9 @@ The ```user_data``` attribute is entirely custom, however in [wrld-example-app](
 |`phone`|string| a phone number for the poi
 |`web`|string| a website for the poi
 |`description`|string| a description for the poi
-|`highlight`|string| id of the highlight to enable for a poi
+|`highlight`|string\|string[]| id(s) of the highlight(s) to enable for a poi
 |`highlight_color`|array| highlight color defined as an [R,G,B,A] int array (0-255)
 |`highlight_border_thickness`|decimal| a value between 0 and 1 that describes how thick the border for area highlights should be (default: 0.5)
-|`entity_highlight`|array| string array of entities to highlight for poi
-|`entity_highlight_color`|array| entity highlight color defined as [R,G,B,A] int array (0-255)
-|`entity_highlight_border_thickness`|decimal| a value between 0 and 1 that describes how thick the border should be for area highlights in entity_highlight array (default: 0.5)
 |`custom_view`|string| a url of a html view
 |`custom_view_height`|int| define the height of the custom_view (optional)
 
