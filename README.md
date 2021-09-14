@@ -41,9 +41,9 @@ A POI Set is a JSON object with the following attributes:
 
 |Field|Type|Description|
  --- | --- | ---
-|`id`|integer| a unique identifier for the poi set, this is generated for you
-|`name`|string| an appropriate name for the poi set
-|`api_key_permissions`|string list| app api keys that have access to this poi set
+|`id`|integer| a unique identifier for the POI set, this is generated for you
+|`name`|string| an appropriate name for the POI set
+|`api_key_permissions`|string list| app api keys that have access to this POI set
 
 ##### <a name="newpoiset"></a>Create a POI Set
 
@@ -129,27 +129,27 @@ A POI is a JSON object with the following attributes:
 
 |Field|Required|Empty|Type|Description|
  --- | --- | --- | --- | ---
-|`id`|generated|no|integer| a unique identifier for the poi, this is generated for you
-|`title`|required|no|string| an appropriate title for the poi (i.e. place name)
-|`subtitle`|required|yes|string| an appropriate subtitle for the poi (i.e. address)
+|`id`|generated|no|integer| a unique identifier for the POI, this is generated for you
+|`title`|required|no|string| an appropriate title for the POI (i.e. place name)
+|`subtitle`|required|yes|string| an appropriate subtitle for the POI (i.e. address)
 |`tags`|required|no|string| a whitespace separated list of [tags](#tags)
 |`lat`|required|no|decimal| wgs84 decimal degrees latitude
 |`lon`|required|no|decimal| wgs84 decimal degrees longitude
-|`height_offset`|optional|no|decimal| height in metres of poi above ground level (default: 0)
-|`indoor`|optional|no|boolean| whether poi is indoor (default: false)
-|`indoor_id`|optional|yes|string| the id of the indoor map the poi belongs to (default: empty)
-|`floor_id`|optional|no|integer| the floor_id of the indoor map the poi belongs to (default: 0)
+|`height_offset`|optional|no|decimal| height in metres of POI above ground level (default: 0)
+|`indoor`|optional|no|boolean| whether POI is indoor (default: false)
+|`indoor_id`|optional|yes|string| the id of the indoor map the POI belongs to (default: empty)
+|`floor_id`|optional|no|integer| the floor_id of the indoor map the POI belongs to (default: 0)
 |`user_data`|optional|yes|json| a json object of custom user data (default: empty)
 
 The ```user_data``` attribute is entirely custom, however in [wrld-example-app](http://github.com/wrld3d/wrld-example-app) the following default ```user_data``` attributes are supported:
 
 |Field|Type|Description|
  --- | --- | ---
-|`image_url`|string| a url to an image to display for the poi
-|`phone`|string| a phone number for the poi
-|`web`|string| a website for the poi
-|`description`|string| a description for the poi
-|`highlight`|string \| string[]| id(s) of the highlight(s) to enable for a poi
+|`image_url`|string| a url to an image to display for the POI
+|`phone`|string| a phone number for the POI
+|`web`|string| a website for the POI
+|`description`|string| a description for the POI
+|`highlight`|string \| string[]| id(s) of the highlight(s) to enable for a POI
 |`highlight_color`|int[]| highlight color defined as an [R,G,B,A] int array (0-255)
 |`highlight_border_thickness`|decimal| a value between 0 and 1 that describes how thick the border for area highlights should be (default: 0.5)
 |`custom_view`|string| a url of a html view
@@ -219,9 +219,9 @@ Indoor POIs are supported by default in [wrld-example-app](http://github.com/wrl
 
 |Field|Type|Description|
  --- | --- | ---
-|`indoor`|boolean| whether poi is indoor (default: false)
-|`indoor_id`|string| the id of the indoor map the poi belongs to (default: empty)
-|`floor_id`|integer| the floor_id of the indoor map the poi belongs to (default: 0)
+|`indoor`|boolean| whether POI is indoor (default: false)
+|`indoor_id`|string| the id of the indoor map the POI belongs to (default: empty)
+|`floor_id`|integer| the floor_id of the indoor map the POI belongs to (default: 0)
 
 The ```indoor_id``` is the id of the indoor map. See [wrld-indoor-maps-api](http://github.com/wrld3d/wrld-indoor-maps-api) for more details.
 
